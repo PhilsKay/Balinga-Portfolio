@@ -1,0 +1,54 @@
+﻿@inject IJSRuntime JSRuntime
+@using System.Timers
+<!--
+  - #HERO
+-->
+
+<section class="section hero" id="home" aria-label="home">
+    <div class="container">
+
+        <img src="img/Balinga Photogrphy png 3.png" width="322" height="322" alt="" class="hero-banner">
+
+        <div class="hero-content">
+
+            <h1 class="h1 hero-title">Oni Daniel</h1>
+
+            <div class="wrapper h2">
+                <strong class="strong animated-text" data-letter-effect>@currentText</strong>
+            </div>
+
+            <p class="hero-text">Decade Of Experience</p>
+
+        </div>
+
+    </div>
+
+    <img src="images/hero-shape.svg" width="211" height="189" alt="" class="shape">
+
+</section>
+@code {
+    private string[] textItems = { "Photographer" , "Shutterbug", "Cameraman","Videographer" };
+    private int currentIndex = 0;
+    private string currentText = "";
+
+    protected override void OnInitialized()
+    {
+        UpdateText();
+        // Start timer to change text every 3 seconds
+        var timer = new Timer(2000);
+        timer.Elapsed += (sender, e) => UpdateText();
+        timer.AutoReset = true;
+        timer.Enabled = true;
+    }
+
+    private void UpdateText()
+    {
+        // Update current text with the next item from the array
+        currentText = textItems[currentIndex];
+        currentIndex = (currentIndex + 1) % textItems.Length;
+        // Trigger Blazor UI update
+        StateHasChanged();
+    }
+}
+
+

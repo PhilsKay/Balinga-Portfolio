@@ -1,0 +1,276 @@
+﻿
+/*-----------------------------------*\
+  #HERO
+\*-----------------------------------*/
+.hero {
+    padding-block-start: 120px;
+    text-align: center;
+}
+
+.hero-banner {
+    max-width: 150px;
+    margin-inline: auto;
+    margin-block-end: 20px;
+}
+
+.hero .wrapper {
+    position: relative;
+    text-align: left;
+    height: 1.2em;
+    margin-block: 10px 25px;
+}
+
+    .hero .wrapper .strong {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        font-weight: inherit;
+        display: flex;
+    }
+
+.hero-text {
+    font-size: var(--fs-10);
+    font-weight: var(--fw-300);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.hero .wrapper .space {
+    padding: 0.1em;
+}
+
+.hero .wrapper :is(.in, .out) {
+    opacity: 0;
+    transform: scaleY(0);
+}
+
+.hero .strong.active .out {
+    opacity: 1;
+    transform: scaleY(1);
+    animation: textWave 0.2s ease reverse forwards;
+}
+
+.hero .wrapper .in {
+    animation: textWave 0.2s ease forwards;
+}
+
+
+/*.animated-text {
+    animation: textWave 0.2s ease forwards;
+}*/
+
+@keyframes textWave {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+/**
+ * responsive for large than 992px screen
+ */
+
+@media (min-width: 992px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-1: 8rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .section {
+        position: relative;
+    }
+
+    .container {
+        max-width: 960px;
+    }
+
+
+  
+    /**
+   * HERO
+   */
+
+    .hero {
+        padding-block-start: 150px;
+    }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+    .hero-title {
+        text-align: left;
+    }
+
+    .hero .wrapper {
+        --fs-2: 8rem;
+        margin-block: -5px 10px;
+    }
+
+    .hero-banner {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        max-width: 200px;
+        z-index: -1;
+    }
+
+    .hero .shape {
+        display: none;
+    }
+}
+
+/**
+ * responsive for large than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-1: 10rem;
+        --fs-2: 9rem;
+        --fs-3: 6.8rem;
+        --fs-4: 3.6rem;
+        --fs-6: 2.8rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 1140px;
+    }
+
+
+    /**
+   * HERO
+   */
+
+    .hero {
+        padding-block: 170px 150px;
+    }
+
+        .hero .container {
+            max-width: 1250px;
+        }
+
+        .hero .wrapper {
+            --fs-2: 10rem;
+            margin-block: -10px 15px;
+        }
+
+            .hero .wrapper .strong {
+                left: 40%;
+            }
+
+    .hero-text {
+        --fs-10: 2rem;
+        font-weight: var(--fw-400);
+        letter-spacing: 8px;
+    }
+
+    .hero-banner {
+        max-width: 290px;
+    }
+
+    .hero .shape {
+        display: block;
+        top: 60%;
+        left: 0;
+    }
+}
+
+
+/**
+ * responsive for large than 1400px screen
+ */
+
+@media (min-width: 1400px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-1: 13rem;
+        --fs-2: 10rem;
+        --fs-3: 8rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 1320px;
+    }
+
+    :is(.header, .gallery, .category, .portfolio) .container {
+        max-width: 1580px;
+    }
+
+
+    /**
+   * HERO
+   */
+
+    .hero .container {
+        max-width: 1500px;
+    }
+
+    .hero-content {
+        margin-inline-end: 400px;
+    }
+
+    .hero .wrapper {
+        --fs-2: 13rem;
+    }
+
+    .hero-text {
+        --fs-10: 2.4rem;
+    }
+
+    .hero-banner {
+        max-width: max-content;
+    }
+
+}

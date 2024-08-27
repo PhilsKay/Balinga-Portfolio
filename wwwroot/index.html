@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+      - primary meta tags
+    -->
+    <title>Oni Daniel</title>
+    <meta name="title" content="Oni Daniel">
+    <meta name="description" content="This is Oni Daniel portfolio made by Philskay_dev">
+
+    <!--
+      - favicon
+    -->
+    <link rel="shortcut icon" href="img/Balinga Photogrphy Logo 2.png" type="image/svg+xml">
+
+    <!--
+      - custom css link
+    -->
+    <!--<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />-->
+    <link href="BalingaPortfolio.styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--
+      - custom font link
+    -->
+    <link rel="stylesheet" href="font/font.css">
+
+    <!--
+      - preload images
+    -->
+    <link rel="preload" as="image" href="img/Balinga Photogrphy Logo 2.png">
+    <link rel="preload" as="image" href="img/loading-circle.svg">
+</head>
+
+<body class="active">
+    <div id="app">
+        <!--Preloader-->
+        <div class="loading" data-loading>
+            <img src="img/Balinga Photogrphy Logo 2.png" width="55" height="55" alt="loading" class="img" />
+            <img src="img/loading-circle.svg" width="70" height="70" alt="" class="circle" />
+        </div>
+
+
+
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/hero.js"></script>
+    <script>
+        window.scrollListener = function () {
+            const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+            window.addEventListener("scroll", function () {
+                const bodyHeight = document.body.scrollHeight;
+                const windowHeight = window.innerHeight;
+                const scrollEndPos = bodyHeight - windowHeight;
+                const totalScrollPercent = (window.scrollY / scrollEndPos) * 100;
+
+                backTopBtn.textContent = `${totalScrollPercent.toFixed(0)}%`;
+
+                // visible back top btn when scrolled 5% of the page
+                if (totalScrollPercent > 5) {
+                    backTopBtn.classList.add("show");
+                } else {
+                    backTopBtn.classList.remove("show");
+                }
+            });
+        }
+
+        window.scrollListener = scrollListener;
+    </script>
+    <script>
+        // scrollReveal.js
+        window.scrollReveal = function () {
+            const revealElements = document.querySelectorAll("[data-reveal]");
+
+            const scrollReveal = function () {
+                for (let i = 0; i < revealElements.length; i++) {
+                    const elementIsInScreen = revealElements[i].getBoundingClientRect().top < window.innerHeight / 1.15;
+
+                    if (elementIsInScreen) {
+                        revealElements[i].classList.add("revealed");
+                    } else {
+                        revealElements[i].classList.remove("revealed");
+                    }
+                }
+            }
+
+            window.addEventListener("scroll", scrollReveal);
+
+            scrollReveal();
+        }
+
+    </script>
+</body>
+
+</html>

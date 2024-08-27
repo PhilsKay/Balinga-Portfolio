@@ -1,0 +1,149 @@
+﻿@inject IJSRuntime JSRuntime
+
+@inherits LayoutComponentBase
+<!--
+   - #HEADER
+ -->
+<header class="header" data-header="@headerCssClass" @onscroll="HandleScroll">
+    <div class="container">
+
+        <a href="#" class="logo">
+            <img src="img/Balinga Photogrphy Logo 1.png" style="border-radius:50%;" width="40" height="40" alt="Daniel home">
+        </a>
+
+        <button class="nav-open-btn" @onclick="ToggleNav" aria-label="open menu" data-nav-toggler>
+            <img src="images/menu.svg" width="17" height="17" alt="menu icon">
+        </button>
+
+        <nav class="@NavbarCssClass" data-navbar>
+
+            <div class="navbar-top">
+                <a href="#" class="logo">
+                    <img src="img/Balinga Photogrphy png 1.png" width="140" height="40" alt="Daniel home" class="img">
+                </a>
+
+                <button class="nav-close-btn" @onclick="CloseNav" aria-label="close menu" data-nav-toggler>
+                    <span class="span one"></span>
+                    <span class="span two"></span>
+                </button>
+            </div>
+
+            <ul class="navbar-list">
+
+                <li class="navbar-item">
+                    <a href="#home" @onclick="CloseNav" class="navbar-link" data-nav-link>Home</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#gallery" @onclick="CloseNav" class="navbar-link" data-nav-link>Gallery</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#about" @onclick="CloseNav" class="navbar-link" data-nav-link>About</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#services" @onclick="CloseNav" class="navbar-link" data-nav-link>Services</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#portfolio" @onclick="CloseNav" class="navbar-link" data-nav-link>Portfolio</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="#contact" @onclick="CloseNav" class="navbar-link" data-nav-link>Contact us</a>
+                </li>
+
+            </ul>
+
+            <button class="login-btn">
+                <img src="images/user.svg" width="21" height="21" alt="user icon">
+
+                <span class="span">Lorem</span>
+            </button>
+
+            <p class="navbar-title">My Address</p>
+
+            <address class="navbar-text">
+                40, Fetuga street, ladilak. Bariga Lagos
+            </address>
+
+            <p class="navbar-text">
+                Urgent issue? call us at
+                <a href="tel:+2349033358105" class="contact-link">903-335-8105</a>
+            </p>
+
+        </nav>               
+
+        <div class="@OverlayCssClass" @onclick="ToggleNav" data-nav-toggler data-overlay></div>
+
+    </div>
+</header>
+@Body
+
+<!--
+    - #BACK TO TOP
+  -->
+
+<a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>0%</a>
+
+<!--
+  - #CUSTOM CURSOR
+-->
+
+<div class="cursor" data-cursor></div>
+
+
+
+@code {
+
+    bool IsNavActive { get; set; } = false;
+
+    string NavbarCssClass => IsNavActive ? "navbar active" : "navbar";
+    string OverlayCssClass => IsNavActive ? "overlay active" : "overlay";
+
+    private string BackTopBtnText = "0%";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //Back to top scroll
+            await JSRuntime.InvokeVoidAsync("scrollListener");
+        }
+    }
+
+    void ToggleNav()
+    {
+        IsNavActive = !IsNavActive;
+    }
+
+    void CloseNav()
+    {
+        IsNavActive = false;
+    }
+
+    private async Task HelloMe()
+    {
+        await JSRuntime.InvokeVoidAsync("helloMe");
+    }
+
+    string headerCssClass = "";
+
+    async Task HandleScroll(EventArgs args)
+    {
+        int scrollY = (int) await JSRuntime.InvokeAsync<int>("eval", "window.scrollY");
+
+        // Check the scroll position
+        if (scrollY > 50)
+        {
+            // Apply the "active" CSS class
+            headerCssClass = "active";
+        }
+        else
+        {
+            // Remove the "active" CSS class
+            headerCssClass = "";
+        }
+    }
+}

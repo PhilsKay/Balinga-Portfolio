@@ -1,0 +1,342 @@
+﻿@inject IJSRuntime JSRuntime
+<head>
+    <style>
+        .gallery-list {
+    display: grid;
+    gap: 30px;
+}
+
+.gallery-item,
+.gallery-card {
+    position: relative;
+}
+
+    .gallery-card :is(.card-content, .btn-icon) {
+        position: absolute;
+        z-index: 1;
+    }
+
+    .gallery-card .card-content {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 12px;
+    }
+
+    .gallery-card .card-tag {
+        color: var(--white_a70);
+        font-size: var(--fs-9);
+        font-weight: var(--fw-300);
+    }
+
+    .gallery-card .card-title {
+        font-weight: var(--fw-400);
+        max-width: max-content;
+        margin-block-end: 2px;
+    }
+
+        .gallery-card .card-title:is(:hover, :focus-visible) {
+            text-decoration: underline;
+        }
+
+    .gallery-card .btn-icon {
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        --border-radius: 0 0 0 var(--radius-25);
+    }
+
+        .gallery-card .btn-icon img {
+            width: 25px;
+            transform: rotate(-45deg);
+        }
+
+        .gallery-card .btn-icon:is(:hover, :focus-visible) {
+            border-bottom-left-radius: var(--radius-5);
+        }
+
+.gallery-card {
+    animation: changeCard 10s linear infinite;
+}
+
+.gallery-item .gallery-card:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    animation-delay: 5s;
+}
+
+
+
+.gallery-item:is(:hover, :focus-within) .gallery-card {
+    animation-play-state: paused;
+}
+
+.gallery .scroll-down {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-content: center;
+    margin-inline: auto;
+    margin-block-start: 55px;
+    border: 1px solid var(--white_a15);
+    border-radius: var(--radius-circle);
+    transition: var(--transition-2);
+    animation: scrollDown 2.5s linear infinite alternate;
+}
+
+    .gallery .scroll-down img {
+        width: 22px;
+    }
+
+    .gallery .scroll-down:is(:hover, :focus-visible) {
+        background-color: var(--radical-red);
+        border-color: var(--radical-red);
+    }
+    @@keyframes changeCard {
+    0%, 55%, 100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    5%, 50% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@@keyframes scrollDown {
+    0% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(12px);
+    }
+}
+
+    </style>
+</head>
+<section class="section gallery" id="gallery">
+    <div class="container">
+
+        <ul class="gallery-list">
+
+            <li class="gallery-item revealed" data-reveal>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/IMG_4243.jpg" width="450" height="625" loading="lazy" alt="The Drunken"
+                             class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="photos" class="card-title">The Drunken</a>
+                        </h3>
+
+                        <span class="card-tag">Food, Event</span>
+                    </div>
+
+                    <a href="photos" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/IMG_4227.jpg" width="450" height="625" loading="lazy"
+                             alt="Lettuce Entertain" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="photos" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">Landscape</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+            </li>
+
+            <li class="gallery-item revealed" data-reveal>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/human_close_up.jpg" width="450" height="625" loading="lazy" alt="Leaping Lizard"
+                             class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="#" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">Model, Fashion</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/DSC_1648.jpg" width="450" height="625" loading="lazy" alt="Juan More Taco"
+                             class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="#" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">Architecture, Event</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+            </li>
+
+            <li class="gallery-item revealed" data-reveal>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/_F3A9473.jpg" width="450" height="625" loading="lazy" alt="Goldilox Bagels"
+                             class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="#" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">People, Film</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/DSC_1582.jpg" width="450" height="625" loading="lazy" alt="Cookie Monstah"
+                             class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="#" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">Wedding, Event</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+            </li>
+
+            <li class="gallery-item revealed" data-reveal>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/Whatsapp DP.jpg" width="450" height="625" loading="lazy"
+                             alt="Divine Pastabilities" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="#" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">Wedding, Model</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+                <div class="gallery-card">
+
+                    <figure class="card-banner img-holder has-before" style="--width: 450; --height: 625;">
+                        <img src="img/Convo for Frame.jpg" width="450" height="625" loading="lazy"
+                             alt="The Lockhart Bar" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+                        <h3 class="h6">
+                            <a href="#" class="card-title">Lorem ipsum</a>
+                        </h3>
+
+                        <span class="card-tag">Health & Wellnes</span>
+                    </div>
+
+                    <a href="#" class="btn-icon">
+                        <img src="images/arrow-forward.svg" width="43" height="20" loading="lazy"
+                             alt="arrow-forward icon">
+                    </a>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+        <a href="#service" class="scroll-down">
+            <img src="images/scroll-down.svg" width="40" height="66" loading="lazy" alt="mouse scroll">
+        </a>
+
+        <img src="images/gallery-shape.svg" width="220" height="78" loading="lazy" alt="" class="shape">
+
+    </div>
+</section>
+@code{
+    private ElementReference[] revealElements = new ElementReference[2];
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //revealElements = await JSRuntime.InvokeAsync<ElementReference[]>("document.querySelectorAll", "[data-reveal]");
+            await JSRuntime.InvokeVoidAsync("scrollReveal");
+        }
+    }
+}

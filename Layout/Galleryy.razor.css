@@ -1,0 +1,261 @@
+﻿
+
+/*-----------------------------------*\
+  #GALLERY
+\*-----------------------------------*/
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for large than 575px screen
+ */
+
+@media (min-width: 575px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * spacing
+     */
+
+        --section-padding: 80px;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 540px;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    :is(.header, .gallery, .category, .portfolio) .container {
+        max-width: unset;
+    }
+
+    /**
+   * GALLERY
+   */
+
+    .gallery-list {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 25px;
+    }
+
+    .gallery-card .btn-icon {
+        transform-origin: top right;
+        transform: scale(0);
+    }
+
+    .gallery-card:is(:hover, :focus-within) .btn-icon {
+        transform: scale(1);
+    }
+
+    .gallery-card :is(.card-title, .card-tag) {
+        transform: translateY(10px);
+        opacity: 0;
+        transition: var(--transition-2);
+    }
+
+    .gallery-card .card-tag {
+        transition-delay: 0.1s;
+    }
+
+    .gallery-card:is(:hover, :focus-within) :is(.card-title, .card-tag) {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .gallery [data-reveal] {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/**
+ * responsive for large than 768px screen
+ */
+
+@media (min-width: 768px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-3: 4.5rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+/**
+ * responsive for large than 992px screen
+ */
+
+@media (min-width: 992px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-1: 8rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .section {
+        position: relative;
+    }
+
+    .container {
+        max-width: 960px;
+    }
+
+
+    /**
+   * GALLERY
+   */
+
+    .gallery {
+        padding-block-end: 140px;
+    }
+
+    .gallery-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .gallery-item:nth-child(even) {
+        margin-block-start: 100px;
+    }
+
+    .gallery .scroll-down {
+        width: 85px;
+        height: 85px;
+        margin-block-start: 100px;
+    }
+
+        .gallery .scroll-down img {
+            width: 26px;
+        }
+
+    .gallery .shape {
+        left: 5%;
+        bottom: 15%;
+    }
+}
+
+
+
+/**
+ * responsive for large than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-1: 10rem;
+        --fs-2: 9rem;
+        --fs-3: 6.8rem;
+        --fs-4: 3.6rem;
+        --fs-6: 2.8rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 1140px;
+    }
+
+    /**
+   * GALLERY
+   */
+
+    .gallery-list {
+        gap: 50px;
+    }
+
+    .gallery-card .card-title {
+        font-weight: var(--fw-300);
+    }
+}
+
+
+/**
+ * responsive for large than 1400px screen
+ */
+
+@media (min-width: 1400px) {
+
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * typography
+     */
+
+        --fs-1: 13rem;
+        --fs-2: 10rem;
+        --fs-3: 8rem;
+    }
+
+
+
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 1320px;
+    }
+
+    :is(.header, .gallery, .category, .portfolio) .container {
+        max-width: 1580px;
+    }
+}
